@@ -18,6 +18,6 @@ For more information you could visit the links below
 
 #### Links
 * [Linkedin](https://www.linkedin.com/in/guerrerofacundo/).
-* [CV]().
+* [CV](https://github.com/facuguerrero/trainingExercises/blob/main/GuerreroFacundo_Resume.pdf).
 * Software Engineer Integral final work: [Back-End Side](https://github.com/facuguerrero/eleccionesBackEnd).
 * Software Engineer Integral final work: [Front-End Side](https://github.com/facuguerrero/eleccionesFrontEnd).
