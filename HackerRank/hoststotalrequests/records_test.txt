@@ -1,0 +1,8 @@
+host6  1 
+host5  1 
+host8  1 
+host7  1 
+host2  3 
+host1  3 
+host4  1 
+host3  2 
