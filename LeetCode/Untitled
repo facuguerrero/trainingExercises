@@ -1,0 +1,54 @@
+--------------- ShipDeploymentValidator::duplicatedDeployment ---------------
+* First approach
+  cambiar la lista por un set
+* Otro
+Set<String> shipNames = ships.stream()
+        .map(ship -> ship.getShipType().getShipTypeName())
+        .collect(Collectors.toSet());
+if (shipNames.size() != ShipType.values().length) {}
+
+
+
+--------------- ShipDeploymentValidator::shipIsNotContiguous ---------------
+* Primer approach
+  Si consideramos que al crear un bote [B1, B1, B2], esta bien que tire el error de que sobrelapan
+  Podemos hacer Max - Min == length - 1
+
+  List<Integer> elementsToCompare;
+  if (isHorizontal) {
+      elementsToCompare = ship.getCoordinates().stream()
+              .map(Coordinate::getColumn)
+              .collect(toList());
+  }
+  if (isVertical) {
+      elementsToCompare = ship.getCoordinates().stream()
+              .map(Coordinate::getRow)
+              .collect(toList());
+  }
+  Integer minElement = Collections.min(elementsToCompare);
+  Integer maxElement = Collections.max(elementsToCompare);
+
+  if (maxElement-minElement != ship.getShipType().getShipLength() -1) {
+      throw new ShipDeploymentException(ship.getShipType().getShipTypeName(), ship.getCoordinates().stream().map(Coordinate::getValue).collect(toList()));
+  }
+
+  -----------
+  Si lo anterior no esta bien (te podrian enviar 2 veces la misma coordenada)
+  List<Integer> elementsToCompare;
+  if (isHorizontal) {
+      elementsToCompare = ship.getCoordinates().stream()
+              .map(Coordinate::getColumn)
+              .collect(toList());
+  }
+  if (isVertical) {
+      elementsToCompare = ship.getCoordinates().stream()
+              .map(Coordinate::getRow)
+              .collect(toList());
+  }
+  Integer minElement = Collections.min(elementsToCompare);
+
+  for (int i=1; i < elementsToCompare.size(); i++) {
+      if(minElement + i != elementsToCompare.get(i)) {
+          throw new ShipDeploymentException(ship.getShipType().getShipTypeName(), ship.getCoordinates().stream().map(Coordinate::getValue).collect(toList()));
+      }
+  }

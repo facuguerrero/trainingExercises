@@ -21,3 +21,9 @@ Given a string s, find the length of the longest substring without repeating cha
 ### Example 4:
 * Input: s = ""
 * Output: 0
+
+### Analysis
+* [Link](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+* Difficulty: medium
+* Time Complexity: O(n)
+* Space Complexity: O(1)
