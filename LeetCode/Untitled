@@ -14,7 +14,7 @@ if (shipNames.size() != ShipType.values().length) {}
   Si consideramos que al crear un bote [B1, B1, B2], esta bien que tire el error de que sobrelapan
   Podemos hacer Max - Min == length - 1
 
-  List<Integer> elementsToCompare;
+  List<Integer> elementsToCompare = new ArrayList<>();
   if (isHorizontal) {
       elementsToCompare = ship.getCoordinates().stream()
               .map(Coordinate::getColumn)
@@ -34,7 +34,7 @@ if (shipNames.size() != ShipType.values().length) {}
 
   -----------
   Si lo anterior no esta bien (te podrian enviar 2 veces la misma coordenada)
-  List<Integer> elementsToCompare;
+  List<Integer> elementsToCompare = new ArrayList<>();
   if (isHorizontal) {
       elementsToCompare = ship.getCoordinates().stream()
               .map(Coordinate::getColumn)
@@ -52,3 +52,55 @@ if (shipNames.size() != ShipType.values().length) {}
           throw new ShipDeploymentException(ship.getShipType().getShipTypeName(), ship.getCoordinates().stream().map(Coordinate::getValue).collect(toList()));
       }
   }
+
+  --------------- FieldService::isShipSunk ---------------
+
+    @Test
+    public void testShipSunk() {
+        List<Coordinate> coordinates = shipsDeployment.get(0).getCoordinates();
+        field[coordinates.get(0).getRow()][coordinates.get(0).getColumn()].hit();
+        field[coordinates.get(1).getRow()][coordinates.get(1).getColumn()].hit();
+        boolean isShipSunk = fieldService.isShipSunk(field, shipsDeployment.get(0));
+        assertTrue(isShipSunk);
+    }
+
+    public boolean isShipSunk(Cell[][] field, Ship ship) {
+      return ship.getCoordinates()
+                  .stream()
+                  .map(coordinate -> field[coordinate.getRow()][coordinate.getColumn()].isHit())
+                  .reduce(true, (accumulator, current) -> accumulator && current);
+    }
+
+
+  --------------- FieldService::allShipSunk ---------------
+
+    @Test
+    public void testAllShipSunkIsFalseWhenOnlyOneShipIsSunk() {
+        List<Coordinate> coordinates = shipsDeployment.get(0).getCoordinates();
+        field[coordinates.get(0).getRow()][coordinates.get(0).getColumn()].hit();
+        field[coordinates.get(1).getRow()][coordinates.get(1).getColumn()].hit();
+        boolean allShipSunk = fieldService.allShipsSunk(field);
+        assertFalse(allShipSunk);
+    }
+
+    @Test
+    public void testAllShipSunkIsTrue() {
+        shipsDeployment.stream()
+                .map(Ship::getCoordinates)
+                .flatMap(Collection::stream)
+                .forEach(coordinate -> field[coordinate.getRow()][coordinate.getColumn()].hit());
+
+        boolean allShipSunk = fieldService.allShipsSunk(field);
+        assertTrue(allShipSunk);
+    }
+
+    public boolean allShipsSunk(Cell[][] field) {
+        for (int row = 0; row < field.length; row++) {
+            for (int col = 0; col < field[0].length; col++) {
+                if (!field[row][col].isWater() && !this.isShipSunk(field, field[row][col].getShip())) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
