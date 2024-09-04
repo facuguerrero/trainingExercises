@@ -5,7 +5,7 @@ Hi,
 
 Mi name is Facundo Guerrero and I'm Software Engineer graduated from University of Buenos Aires ([UBA](http://www.uba.ar/)).
 
-Also, I've been working as Software Engineer at PayPal Since June 2021.
+I've been working as Sr Software Engineer at Glovo Since May 2022.
 
 #### Objective
 In this repo, you could find exercises solved by me and the main idea of it is to show my programming skills.
