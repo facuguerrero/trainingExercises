@@ -12,21 +12,21 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class LongestPalindromicSubstringTest {
 
-    private LongestPalindromicSubstring longestPalindromicSubstring = new LongestPalindromicSubstring();
+  private LongestPalindromicSubstring longestPalindromicSubstring = new LongestPalindromicSubstring();
 
-    @ParameterizedTest
-    @MethodSource("testUseCases")
-    void testCases(String string, String expectedResult) {
-        String result = longestPalindromicSubstring.longestPalindromeBottomUp(string);
+  @ParameterizedTest
+  @MethodSource("testUseCases")
+  void testCases(String string, String expectedResult) {
+    String result = longestPalindromicSubstring.longestPalindromeBottomUp(string);
 
-        assertEquals(expectedResult, result);
-    }
+    assertEquals(expectedResult, result);
+  }
 
-    private static Stream<Arguments> testUseCases() {
-        return Stream.of(
-          Arguments.of("", ""),
-          Arguments.of("babad", "aba"),
-          Arguments.of("cbbd", "bb")
-        );
-    }
+  private static Stream<Arguments> testUseCases() {
+    return Stream.of(
+      Arguments.of("", ""),
+      Arguments.of("babad", "aba"),
+      Arguments.of("cbbd", "bb")
+    );
+  }
 }

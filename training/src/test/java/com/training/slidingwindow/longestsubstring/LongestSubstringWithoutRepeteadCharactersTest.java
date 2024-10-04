@@ -12,21 +12,21 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class LongestSubstringWithoutRepeteadCharactersTest {
 
-    private LongestSubstringWithoutRepeatingCharacters longestSubstringWithoutRepeatingCharacters = new LongestSubstringWithoutRepeatingCharacters();
+  private LongestSubstringWithoutRepeatingCharacters longestSubstringWithoutRepeatingCharacters = new LongestSubstringWithoutRepeatingCharacters();
 
-    @ParameterizedTest
-    @MethodSource("testUseCases")
-    void testCases(String string, int expectedLongestSubstring) {
-        int result = longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring(string);
+  @ParameterizedTest
+  @MethodSource("testUseCases")
+  void testCases(String string, int expectedLongestSubstring) {
+    int result = longestSubstringWithoutRepeatingCharacters.lengthOfLongestSubstring(string);
 
-        assertEquals(expectedLongestSubstring, result);
-    }
+    assertEquals(expectedLongestSubstring, result);
+  }
 
-    private static Stream<Arguments> testUseCases() {
-        return Stream.of(
-          Arguments.of("tmmzuxt", 5),
-          Arguments.of("abcabcbb", 3),
-          Arguments.of("bbbbb", 1)
-        );
-    }
+  private static Stream<Arguments> testUseCases() {
+    return Stream.of(
+      Arguments.of("tmmzuxt", 5),
+      Arguments.of("abcabcbb", 3),
+      Arguments.of("bbbbb", 1)
+    );
+  }
 }

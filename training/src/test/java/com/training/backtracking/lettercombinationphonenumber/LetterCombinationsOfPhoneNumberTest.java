@@ -13,23 +13,23 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class LetterCombinationsOfPhoneNumberTest {
 
-    private LetterCombinationsOfPhoneNumber letterCombinationsOfPhoneNumber = new LetterCombinationsOfPhoneNumber();
+  private LetterCombinationsOfPhoneNumber letterCombinationsOfPhoneNumber = new LetterCombinationsOfPhoneNumber();
 
-    @ParameterizedTest
-    @MethodSource("testUseCases")
-    void testCases(String digits, List<String> expectedResult) {
-        List<String> result = letterCombinationsOfPhoneNumber.letterCombinations(digits);
+  @ParameterizedTest
+  @MethodSource("testUseCases")
+  void testCases(String digits, List<String> expectedResult) {
+    List<String> result = letterCombinationsOfPhoneNumber.letterCombinations(digits);
 
-        assertEquals(expectedResult, result);
-    }
+    assertEquals(expectedResult, result);
+  }
 
-    private static Stream<Arguments> testUseCases() {
-        return Stream.of(
-          Arguments.of("", List.of()),
-          Arguments.of("2", List.of("a", "b", "c")),
-          Arguments.of("23", List.of("ad","ae","af","bd","be","bf","cd","ce","cf"))
-        );
-    }
+  private static Stream<Arguments> testUseCases() {
+    return Stream.of(
+      Arguments.of("", List.of()),
+      Arguments.of("2", List.of("a", "b", "c")),
+      Arguments.of("23", List.of("ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"))
+    );
+  }
 
 
 }

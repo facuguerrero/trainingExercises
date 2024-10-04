@@ -12,23 +12,23 @@ import org.mockito.junit.jupiter.MockitoExtension;
 @ExtendWith(MockitoExtension.class)
 class ValidParenthesesTest {
 
-    private ValidParentheses validParentheses = new ValidParentheses();
+  private ValidParentheses validParentheses = new ValidParentheses();
 
-    @ParameterizedTest
-    @MethodSource("testUseCases")
-    void testCases(String string, Boolean expectedResult) {
-        Boolean result = validParentheses.isValid(string);
+  @ParameterizedTest
+  @MethodSource("testUseCases")
+  void testCases(String string, Boolean expectedResult) {
+    Boolean result = validParentheses.isValid(string);
 
-        assertEquals(expectedResult, result);
-    }
+    assertEquals(expectedResult, result);
+  }
 
-    private static Stream<Arguments> testUseCases() {
-        return Stream.of(
-          Arguments.of("()", true),
-          Arguments.of("()[]{}", true),
-          Arguments.of("(]", false),
-          Arguments.of("(", false),
-          Arguments.of("]", false)
-        );
-    }
+  private static Stream<Arguments> testUseCases() {
+    return Stream.of(
+      Arguments.of("()", true),
+      Arguments.of("()[]{}", true),
+      Arguments.of("(]", false),
+      Arguments.of("(", false),
+      Arguments.of("]", false)
+    );
+  }
 }

@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Queue;
 
 public class TreeNode {
+
   Integer val;
   TreeNode left;
   TreeNode right;
@@ -20,13 +21,18 @@ public class TreeNode {
 
   @Override
   public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
     TreeNode treeNode = (TreeNode) o;
     return Objects.equals(val, treeNode.val);
   }
 
-  public TreeNode() { }
+  public TreeNode() {
+  }
 
   public TreeNode(Integer val) {
     this.val = val;
@@ -45,7 +51,9 @@ public class TreeNode {
     int i = 1;
     while (i < values.size()) {
       TreeNode current = queue.poll();
-      if (current == null) continue;
+      if (current == null) {
+        continue;
+      }
 
       Integer leftVal = values.get(i++);
       if (leftVal != null) {
