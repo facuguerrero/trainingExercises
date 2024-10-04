@@ -17,7 +17,7 @@ During the whole project more than 770 million Tweets, 9.5 million users and 4.5
 For more information you could visit the links below
 
 #### Links
-* [Linkedin](https://www.linkedin.com/in/guerrerofacundo/).
+* [Linkedin](https://www.linkedin.com/in/guerrerofacundo/?locale=en_US).
 * [CV](https://github.com/facuguerrero/trainingExercises/blob/main/GuerreroFacundo_Resume.pdf).
 * Software Engineer Integral final work: [Back-End Side](https://github.com/facuguerrero/eleccionesBackEnd).
 * Software Engineer Integral final work: [Front-End Side](https://github.com/facuguerrero/eleccionesFrontEnd).
